@@ -10,7 +10,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", Arial, sans-serif;
-  font-size: 22px;
+  font-size: 1vw;
 }
 
 /* body {
@@ -33,7 +33,7 @@ header {
     align-items: center;
     background-color: #457b9d;
     padding: 10px 20px;
-    font-size: 20px;
+    /* font-size:5vw; */
 }
 
 .logo img {
@@ -72,7 +72,8 @@ nav ul li a {
   text-decoration: none;
   color: #f1faee;
   /* font-weight: bold; */
-  font-size:26px;
+  /* font-size:26px; */
+  font-size:1.5vw;
 }
 
 nav ul li a:hover {
@@ -123,19 +124,18 @@ nav ul li a:hover {
 }
 
 .pet-description h1 {
-  font-size: 56px;
+  font-size: 3vw;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
 .pet-description p {
   margin-bottom: 15px;
-  
 }
 
-.gender-symbol {
+/* .gender-symbol {
   font-size: 22px;
-}
+} */
 
 .pet-info {
   grid-column: 3/4;
@@ -220,7 +220,8 @@ footer a {
 }
 
 footer i {
-  font-size: 32px;
+  /* font-size: 32px; */
+  font-size: 1.5vw;
 }
 
 .social-media {
@@ -245,7 +246,8 @@ footer i {
 
 .contact-container h1,
 .aboutus-container h1 {
-  font-size: 36px;
+  /* font-size: 36px; */
+  font-size: 1.75vw;
   font-weight: bold;
   margin-bottom: 20px;
 }
@@ -278,13 +280,15 @@ footer i {
 }
 
 .welcome-section h1 {
-  font-size: 56px;
+  /* font-size: 56px; */
+  font-size: 4vw;
   margin-bottom: 1rem;
   color:#1d3557;
 }
 
 .welcome-section p {
-  font-size: 32px;
+  /* font-size: 32px; */
+  font-size: 2vw;
   margin-bottom: 2rem;
 
 }
@@ -381,12 +385,14 @@ color:#e63946;
 } 
 
 .petInfo .description h3, .petInfo .description #petName {
-  font-size: 42px;
+  /* font-size: 42px; */
+  font-size: 1.75vw;
   padding-top:1rem;
 }
 
 .petInfo .description p, .petInfo .description #age, .petInfo .description #breed{
-  font-size: 24px;
+  /* font-size: 24px; */
+  font-size: 1.25vw;
   padding-top:0.75rem;
 }
 #next,#moreInfo {
@@ -398,7 +404,8 @@ color:#e63946;
 
 /* #page1 .buttons  */
 #next i, #moreInfo i{
-  font-size:90px;
+  /* font-size:90px; */
+  font-size:3vw;
   text-align: center;
   padding:10px;
 }
@@ -428,12 +435,14 @@ border-radius: 8px;} */
 
 #page2 .description h3 {
   font-size: 48px;
+  /* font-size: 1vw; */
   margin-top:2rem;
   margin-bottom: 1rem;
 }
 
 #page2  .description p {
-  font-size: 32px;
+  /* font-size: 32px; */
+  /* font-size: 2vw; */
   margin-bottom: 1rem;
 }
 

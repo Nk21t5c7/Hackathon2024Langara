@@ -8,7 +8,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
 
 let showPet = [];
 const pets = petData;
-window.onload = function(){
+window.onload = function () {
   // const currentUrl = window.location.href;
   // if (!currentUrl.includes('match.html')) {
   //   // 'match.html'が含まれていない場合はsessionStorageをクリア
@@ -18,36 +18,41 @@ window.onload = function(){
   //     // 'match.html'の場合、sessionStorageを保持
   //     console.log("sessionStorage retained.");
 
-      const displayedBefore = JSON.parse(sessionStorage.getItem('displayedPet'));
-      if(displayedBefore && displayedBefore.length > 0){
-        showPet = displayedBefore;
+  //   const displayedBefore = JSON.parse(sessionStorage.getItem("displayedPet"));
+  //   if (displayedBefore && displayedBefore.length > 0) {
+  //     showPet = displayedBefore;
 
-        petName.textContent = pets[showPet.length -1].name;
-        age.textContent = pets[showPet.length -1].age;
-        breed.textContent = pets[showPet.length -1].breed;
-        petImg.src = pets[showPet.length -1].image;
-        petImg.alt = value;
-      }
+  // let prevPet = pets.find((p) => p.id == showPet[showPet.length - 1]);
+
+  // petName.textContent = prevPet.name;
+  // age.textContent = prevPet.age;
+  // breed.textContent = prevPet.breed;
+  // petImg.src = prevPet.image;
+  // petImg.alt = value;
+
+  // petName.textContent = pets[showPet.length - 1].name;
+  // age.textContent = pets[showPet.length - 1].age;
+  // breed.textContent = pets[showPet.length - 1].breed;
+  // petImg.src = pets[showPet.length - 1].image;
+  //   }
   // }
 
   main();
-}
+};
 
-document.querySelectorAll('a').forEach((link) => {
-  link.addEventListener('click', (e)=> {
-    const href = link.getAttribute('href');
-    if(href.includes('match.html')){
-      sessionStorage.clear();
-      console.log("sessionStorage cleared!");
+// document.querySelectorAll('a').forEach((link) => {
+//   link.addEventListener('click', (e)=> {
+//     const href = link.getAttribute('href');
+//     if(href.includes('match.html')){
+//       sessionStorage.clear();
+//       console.log("sessionStorage cleared!");
 
-    }
-  });
+//     }
+//   });
 
-  
-})
+// })
 
-
-moreInfo.addEventListener("click", () => {});
+// moreInfo.addEventListener("click", () => {});
 next.addEventListener("click", () => {
   console.log(showPet);
 
@@ -60,6 +65,20 @@ console.log(dogData);
 
 function main() {
   console.log(pets);
+
+  const displayedBefore = JSON.parse(sessionStorage.getItem("displayedPet"));
+  if (displayedBefore && displayedBefore.length > 0) {
+    showPet = displayedBefore;
+    let prevPet = pets.find((p) => p.id == showPet[showPet.length - 1]);
+
+    petName.textContent = prevPet.name;
+    age.textContent = prevPet.age;
+    breed.textContent = prevPet.breed;
+    petImg.src = prevPet.image;
+    petImg.alt = value;
+
+    return;
+  }
 
   displayPet();
 }
@@ -123,14 +142,10 @@ function displayPet() {
       }
       console.log("count", count);
     }
-    sessionStorage.setItem('displayedPet', JSON.stringify(showPet));
-
+    sessionStorage.setItem("displayedPet", JSON.stringify(showPet));
   }
   console.log(showPet);
 }
-
-
-
 
 // SPA
 const allPages = document.querySelectorAll("div.page");
@@ -153,7 +168,6 @@ navigateToPage();
 window.addEventListener("hashchange", navigateToPage);
 
 function displayPetInfo(petData) {
-
   petImage.src = petData.image;
   displayName.innerText = petData.name;
   displayBreed.innerText = petData.breed;
@@ -172,3 +186,15 @@ function displayPetInfo(petData) {
     icon.classList.add("fa-venus");
   }
 }
+
+document.querySelectorAll(".mainMenu li a").forEach((e) => {
+  e.addEventListener("click", () => {
+    sessionStorage.clear();
+  });
+});
+
+document.querySelectorAll("footer ul li a").forEach((e) => {
+  e.addEventListener("click", () => {
+    sessionStorage.clear();
+  });
+});

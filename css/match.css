@@ -49,11 +49,17 @@ nav ul li a:hover {
 .petInfo{
     margin: 0 auto;
     max-width: 1200px;
+    
 }
 #petImg{
     height: 65vh;
-    max-width: 1000px;
     margin: 0 auto;
+    max-width: 1000px;
+    display: flex;
+
+}
+.notification{
+    text-align: center;
 }
 
 

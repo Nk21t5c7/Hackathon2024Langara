@@ -9,7 +9,7 @@ let showPet = [];
 const pets = petData;
 window.onload = function () {
   console.log(sessionStorage);
-  
+
   // const currentUrl = window.location.href;
   // if (!currentUrl.includes('match.html')) {
   //   // 'match.html'が含まれていない場合はsessionStorageをクリア
@@ -46,12 +46,10 @@ window.onload = function () {
 // })
 // moreInfo.addEventListener("click", () => {});
 next.addEventListener("click", () => {
-
   displayPet();
 });
 const dogData = pets.filter((pet) => pet.species === "Dog");
 const catData = pets.filter((pet) => pet.species === "Cat");
-
 
 function main() {
   console.log(pets);
@@ -64,6 +62,9 @@ function main() {
     breed.textContent = prevPet.breed;
     petImg.src = prevPet.image;
     petImg.alt = value;
+
+    displayPetInfo(prevPet);
+
     return;
   }
   displayPet();
@@ -154,9 +155,9 @@ function displayPetInfo(petData) {
   infoShelter.innerText = petData.shelter;
   shelterLink.setAttribute("href", `${petData.link}`);
   shelterLink.setAttribute("target", "_blank"); // 新しいウィンドウで開く
-  shelterLink.addEventListener("click", function(event) {
+  shelterLink.addEventListener("click", function (event) {
     event.preventDefault(); // デフォルトのリンク動作を防ぐ
-    window.open(petData.link, '_blank'); // 新しいウィンドウを開く
+    window.open(petData.link, "_blank"); // 新しいウィンドウを開く
   });
   if (petData.sex === "Male") {
     icon.classList.add("fa-mars");
@@ -173,4 +174,16 @@ document.querySelectorAll("footer ul li a").forEach((e) => {
   e.addEventListener("click", () => {
     sessionStorage.clear();
   });
+});
+
+window.addEventListener("beforeunload", function () {
+  sessionStorage.setItem("displayedPet", JSON.stringify(showPet));
+});
+
+// リロード後にデータを復元する
+window.addEventListener("load", function () {
+  const savedData = sessionStorage.getItem("displayedPet");
+  if (savedData) {
+    showPet = JSON.parse(savedData);
+  }
 });

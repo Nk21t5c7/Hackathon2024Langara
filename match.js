@@ -5,11 +5,24 @@ window.addEventListener("DOMContentLoaded", async (event) => {
   value = urlParams.get("value");
   backToSwipe.setAttribute("href", `match.html?value=${value}`);
 });
+
+document.querySelectorAll(".mainMenu li a").forEach((e) => {
+    e.addEventListener("click", () => {
+      // event.preventDefault();
+    sessionStorage.clear();
+  });
+});
+document.querySelectorAll("footer ul li a").forEach((e) => {
+e.addEventListener("click", () => {
+  sessionStorage.clear();
+});
+});
+
 let showPet = [];
 const pets = petData;
 window.onload = function () {
-  console.log(sessionStorage);
 
+  console.log(sessionStorage);
   // const currentUrl = window.location.href;
   // if (!currentUrl.includes('match.html')) {
   //   // 'match.html'が含まれていない場合はsessionStorageをクリア
@@ -78,13 +91,21 @@ function displayPet() {
   }
   if (showPet.length === petCount) {
     document.querySelector(".petInfo").style.display = "none";
-    notification.textContent = `We currently have no more ${value} to show you.`;
+    const notify = document.createElement('p');
+
+    notify.textContent = `We currently have no more ${value} to show you.`;
+    notification.appendChild(notify);
     const backtoHome = document.createElement("button");
     const linktoHome = document.createElement("a");
     linktoHome.textContent = "Back to Home";
     linktoHome.setAttribute("href", "home.html");
     notification.appendChild(backtoHome);
     backtoHome.appendChild(linktoHome);
+
+    backtoHome.addEventListener('click', ()=> {
+      sessionStorage.clear();
+      window.location.href = "home.html"; 
+    });
     return;
   }
   let count = 0;
@@ -165,25 +186,16 @@ function displayPetInfo(petData) {
     icon.classList.add("fa-venus");
   }
 }
-document.querySelectorAll(".mainMenu li a").forEach((e) => {
-  e.addEventListener("click", () => {
-    sessionStorage.clear();
-  });
-});
-document.querySelectorAll("footer ul li a").forEach((e) => {
-  e.addEventListener("click", () => {
-    sessionStorage.clear();
-  });
-});
 
-window.addEventListener("beforeunload", function () {
-  sessionStorage.setItem("displayedPet", JSON.stringify(showPet));
-});
+
+// window.addEventListener("beforeunload", function () {
+//   sessionStorage.setItem("displayedPet", JSON.stringify(showPet));
+// });
 
 // リロード後にデータを復元する
-window.addEventListener("load", function () {
-  const savedData = sessionStorage.getItem("displayedPet");
-  if (savedData) {
-    showPet = JSON.parse(savedData);
-  }
-});
+// window.addEventListener("load", function () {
+//   const savedData = sessionStorage.getItem("displayedPet");
+//   if (savedData) {
+//     showPet = JSON.parse(savedData);
+//   }
+// });

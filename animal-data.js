@@ -27,7 +27,6 @@ export const petData = [
         species: "Dog",
         sex: "Male",
         link: "https://spca.bc.ca/adoption/how-to-adopt/"
-        
 
     },
     {

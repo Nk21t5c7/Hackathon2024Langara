@@ -5,7 +5,6 @@ window.addEventListener("DOMContentLoaded", async (event) => {
   value = urlParams.get("value");
   backToSwipe.setAttribute("href", `match.html?value=${value}`);
 });
-
 let showPet = [];
 const pets = petData;
 window.onload = function () {
@@ -19,72 +18,56 @@ window.onload = function () {
   // } else {
   //     // 'match.html'の場合、sessionStorageを保持
   //     console.log("sessionStorage retained.");
-
   //   const displayedBefore = JSON.parse(sessionStorage.getItem("displayedPet"));
   //   if (displayedBefore && displayedBefore.length > 0) {
   //     showPet = displayedBefore;
-
   // let prevPet = pets.find((p) => p.id == showPet[showPet.length - 1]);
-
   // petName.textContent = prevPet.name;
   // age.textContent = prevPet.age;
   // breed.textContent = prevPet.breed;
   // petImg.src = prevPet.image;
   // petImg.alt = value;
-
   // petName.textContent = pets[showPet.length - 1].name;
   // age.textContent = pets[showPet.length - 1].age;
   // breed.textContent = pets[showPet.length - 1].breed;
   // petImg.src = pets[showPet.length - 1].image;
   //   }
   // }
-
   main();
 };
-
 // document.querySelectorAll('a').forEach((link) => {
 //   link.addEventListener('click', (e)=> {
 //     const href = link.getAttribute('href');
 //     if(href.includes('match.html')){
 //       sessionStorage.clear();
 //       console.log("sessionStorage cleared!");
-
 //     }
 //   });
-
 // })
-
 // moreInfo.addEventListener("click", () => {});
 next.addEventListener("click", () => {
-  // console.log(showPet);
 
   displayPet();
 });
-
 const dogData = pets.filter((pet) => pet.species === "Dog");
 const catData = pets.filter((pet) => pet.species === "Cat");
-// console.log(dogData);
+
 
 function main() {
   console.log(pets);
-
   const displayedBefore = JSON.parse(sessionStorage.getItem("displayedPet"));
   if (displayedBefore && displayedBefore.length > 0) {
     showPet = displayedBefore;
     let prevPet = pets.find((p) => p.id == showPet[showPet.length - 1]);
-
     petName.textContent = prevPet.name;
     age.textContent = prevPet.age;
     breed.textContent = prevPet.breed;
     petImg.src = prevPet.image;
     petImg.alt = value;
-
     return;
   }
-
   displayPet();
 }
-
 function displayPet() {
   let petCount = 0;
   if (value === "dog") {
@@ -92,7 +75,6 @@ function displayPet() {
   } else {
     petCount = catData.length;
   }
-
   if (showPet.length === petCount) {
     document.querySelector(".petInfo").style.display = "none";
     notification.textContent = `We currently have no more ${value} to show you.`;
@@ -104,42 +86,35 @@ function displayPet() {
     backtoHome.appendChild(linktoHome);
     return;
   }
-
   let count = 0;
   while (count === 0) {
     console.log(showPet);
     const random = Math.trunc(Math.random() * dogData.length);
-
     if (value == "dog") {
       if (!showPet.includes(dogData[random].id)) {
         console.log(random);
         count++;
         showPet.push(dogData[random].id);
-
         petName.textContent = dogData[random].name;
         age.textContent = dogData[random].age;
         breed.textContent = dogData[random].breed;
         petImg.src = dogData[random].image;
         petImg.alt = value;
-
         displayPetInfo(dogData[random]);
       }
       console.log(catData[random].name);
     } else if (value == "cat") {
       console.log(showPet);
       const random = Math.trunc(Math.random() * catData.length);
-
       if (!showPet.includes(catData[random].id)) {
         console.log(catData[random].id);
         count++;
         showPet.push(catData[random].id);
-
         petName.textContent = catData[random].name;
         age.textContent = catData[random].age;
         breed.textContent = catData[random].breed;
         petImg.src = catData[random].image;
         petImg.alt = value;
-
         displayPetInfo(catData[random]);
       }
       console.log("count", count);
@@ -148,11 +123,9 @@ function displayPet() {
   }
   console.log(showPet);
 }
-
 // SPA
 const allPages = document.querySelectorAll("div.page");
 allPages[0].style.display = "block";
-
 function navigateToPage(event) {
   const pageId = location.hash ? location.hash : "#page1";
   for (let page of allPages) {
@@ -165,10 +138,8 @@ function navigateToPage(event) {
   return;
 }
 navigateToPage();
-
 //init handler for hash navigation
 window.addEventListener("hashchange", navigateToPage);
-
 function displayPetInfo(petData) {
   petImage.src = petData.image;
   displayName.innerText = petData.name;
@@ -193,13 +164,11 @@ function displayPetInfo(petData) {
     icon.classList.add("fa-venus");
   }
 }
-
 document.querySelectorAll(".mainMenu li a").forEach((e) => {
   e.addEventListener("click", () => {
     sessionStorage.clear();
   });
 });
-
 document.querySelectorAll("footer ul li a").forEach((e) => {
   e.addEventListener("click", () => {
     sessionStorage.clear();

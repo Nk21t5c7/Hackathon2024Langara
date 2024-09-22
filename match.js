@@ -112,9 +112,9 @@ window.addEventListener("hashchange", navigateToPage);
 
 function displayPetInfo(petData) {
   petImage.src = petData.image;
-  petName.innerText = petData.name;
-  breed.innerText = petData.breed;
-  age.innerText = petData.age;
+  displayName.innerText = petData.name;
+  displayBreed.innerText = petData.breed;
+  displayAge.innerText = petData.age;
   sex.innerText = petData.sex;
   description.innerText = petData.description;
   infoBreed.innerText = petData.breed;

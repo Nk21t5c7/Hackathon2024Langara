@@ -1,40 +1,51 @@
 import { petData } from "./animal-data.js";
-import { getPets } from "./index.js";
 
 const showPet = [];
 
 const pets = petData;
 
-async function main(){
-    pets.map(pet => pet.name);
-    const petDataConsole = await getPets();
-    console.log(petDataConsole);
+
+window.onload = main;
+
+
+moreInfo.addEventListener('click', ()=> {
+    
+});
+
+
+
+function main(){
+    console.log(pets);
     
     displayPet(pets);
 }
 
 
 
+
 function displayPet(pets){
     console.log(pets);
-    const random = Math.trunc(Math.random()*12);
     let count = 0;
-    while(count === 1){
-        if(!showPet.include(pets[random].id)){
+    while(count === 0){
+        const random = Math.trunc(Math.random()*12);
+        console.log(random);
+
+        if(!showPet.includes(pets[random].id)){
+            count ++;
             showPet.push(pets[random].id);
 
             petName.textContent = pets[random].name;
             age.textContent  = pets[random].age;
             breed.textContent = pets[random].breed;
-            petImg.src = ''
-            count ++;
+            petImg.src = pets[random].image;
+            
         }
 
-        console.log(petName.textContent);
+        console.log(pets[random].name);
         
     }
 
-    if(showPet.length === 12){
+    if(showPet.length === pets.length){
         document.querySelector('.petInfo').display = 'none';
         notification.textCotent = 'No data.';
         const backtoHome = document.createElement('button');
@@ -44,4 +55,4 @@ function displayPet(pets){
         notification.appendChild(backtoHome);
     }
 }
-main();
+

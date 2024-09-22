@@ -23,19 +23,55 @@
         </nav>
     </header>
     <main>
-        <div id="notification"></div>
-        <div class="petInfo">
-            <img id = 'petImg' src="" alt="">
-            <div class="description">
-                <h3>Name: <span id = 'petName'></span></h3>
-                <p>Age: <span id = 'age'></span></p>
-                <p>Breed: <span  id = 'breed'></span></p>
-            </div>
-            <div class="buttons">
-                <button id = 'next'><i class="fa-solid fa-x"></i></button>
-                <button id = 'moreInfo' ><i class="fa-solid fa-heart"></i></button>
+        <div class="page" id="page1">
+            <div id="notification"></div>
+            <div class="petInfo">
+                <img id = 'petImg' src="" alt="">
+                <div class="description">
+                    <h3>Name: <span id = 'petName'></span></h3>
+                    <p>Age: <span id = 'age'></span></p>
+                    <p>Breed: <span  id = 'breed'></span></p>
+                </div>
+                <div class="buttons">
+                    <button id='next'><i class="fa-solid fa-x"></i></button>
+                    <button id='moreInfo'><a href="#page2"><i class="fa-solid fa-heart"></i></a></button>
+                </div>
             </div>
         </div>
+        <div class="page" id="page2">
+            <section class="pet-detail-container">
+                <div class="pet-image">
+                    <!-- <img src="pexels-pixabay-220938.jpg" alt="Pet Image"> -->
+                    <img src="" alt="Pet Image" id="petImage">
+                </div>
+        
+                <div class="pet-description">
+                    <h1 id="petName"></h1>
+                    <p><span id="breed"></span> / <span id="age"></span> / <i id="icon" class="fa-solid"></i> <span id="sex"></span></p>
+                    <!-- if male using <i class="fa-solid fa-mars"></i> -->
+                     <!-- if female<i class="fa-solid fa-venus"></i> -->
+                    <p id="description"></p>
+        
+                    <div class="swipeButton">
+                        <a href="#" class="swipeLink" id="backToSwipe">&lt;&nbsp; Swipe again &nbsp;</a>
+                    </div>
+                </div>
+        
+                <div class="pet-info">
+                    <p><strong>Breed:</strong> <span id="infoBreed"></span></p>
+                    <p><strong>Age:</strong> <span id="infoAge"></span></p>
+                    <p><strong>Size:</strong> <span id="infoSize"></span></p>
+                    <p><strong>Gender:</strong> <span id="infoSex"></span></p>
+                    <p><strong>Shelter:</strong> <span id="infoShelter"></span></a></p>
+                    <div class="adoptButton">
+                        <a href="#" class="adoptLink" id="shelterLink">Adopt here</a>
+                    </div>
+                    
+        
+                </div>
+            </section>
+        </div>
+
     </main>
     <footer>
         <div class="social-media">

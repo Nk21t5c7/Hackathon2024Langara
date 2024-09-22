@@ -1,5 +1,4 @@
 import { petData } from "./animal-data.js";
-
 let value = "";
 window.addEventListener("DOMContentLoaded", async (event) => {
   const urlParams = await new URLSearchParams(window.location.search);
@@ -7,9 +6,46 @@ window.addEventListener("DOMContentLoaded", async (event) => {
   backToSwipe.setAttribute("href", `match.html?value=${value}`);
 });
 
-const showPet = [];
+let showPet = [];
 const pets = petData;
-window.onload = main;
+window.onload = function(){
+  // const currentUrl = window.location.href;
+  // if (!currentUrl.includes('match.html')) {
+  //   // 'match.html'が含まれていない場合はsessionStorageをクリア
+  //   sessionStorage.clear();
+  //   console.log("sessionStorage cleared!");
+  // } else {
+  //     // 'match.html'の場合、sessionStorageを保持
+  //     console.log("sessionStorage retained.");
+
+      const displayedBefore = JSON.parse(sessionStorage.getItem('displayedPet'));
+      if(displayedBefore && displayedBefore.length > 0){
+        showPet = displayedBefore;
+
+        petName.textContent = pets[showPet.length -1].name;
+        age.textContent = pets[showPet.length -1].age;
+        breed.textContent = pets[showPet.length -1].breed;
+        petImg.src = pets[showPet.length -1].image;
+        petImg.alt = value;
+      }
+  // }
+
+  main();
+}
+
+document.querySelectorAll('a').forEach((link) => {
+  link.addEventListener('click', (e)=> {
+    const href = link.getAttribute('href');
+    if(href.includes('match.html')){
+      sessionStorage.clear();
+      console.log("sessionStorage cleared!");
+
+    }
+  });
+
+  
+})
+
 
 moreInfo.addEventListener("click", () => {});
 next.addEventListener("click", () => {
@@ -24,6 +60,7 @@ console.log(dogData);
 
 function main() {
   console.log(pets);
+
   displayPet();
 }
 
@@ -86,9 +123,14 @@ function displayPet() {
       }
       console.log("count", count);
     }
+    sessionStorage.setItem('displayedPet', JSON.stringify(showPet));
+
   }
   console.log(showPet);
 }
+
+
+
 
 // SPA
 const allPages = document.querySelectorAll("div.page");
@@ -111,6 +153,7 @@ navigateToPage();
 window.addEventListener("hashchange", navigateToPage);
 
 function displayPetInfo(petData) {
+
   petImage.src = petData.image;
   displayName.innerText = petData.name;
   displayBreed.innerText = petData.breed;

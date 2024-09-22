@@ -74,7 +74,7 @@ function displayPet(){
         } 
         
         if(showPet.length === (pets.length)/2){
-            document.querySelector('.petInfo').display = 'none';
+            document.querySelector('.petInfo').style.display = 'none';
             notification.textContent = `We currently have no more ${value} to show you.`;
             const backtoHome = document.createElement('button');
             const linktoHome = document.createElement('a');

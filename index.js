@@ -1,5 +1,6 @@
 
   // Import the functions you need from the SDKs you need
+// import { get } from "http";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
 //   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.x.x/firebase-app.js";
 import {
@@ -21,7 +22,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
   // Function to fetch pets data
-async function getPets() {
+export async function getPets() {
     const petsCollection = collection(db, "pets");
     const petsSnapshot = await getDocs(petsCollection);
     const petsList = petsSnapshot.docs.map((doc) => ({
@@ -29,6 +30,6 @@ async function getPets() {
     ...doc.data(),
 }));
     console.log(petsList);
+    return petsList;
 }
   // Call the function
-getPets();

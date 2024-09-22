@@ -9,6 +9,8 @@ window.addEventListener("DOMContentLoaded", async (event) => {
 let showPet = [];
 const pets = petData;
 window.onload = function () {
+  console.log(sessionStorage);
+  
   // const currentUrl = window.location.href;
   // if (!currentUrl.includes('match.html')) {
   //   // 'match.html'が含まれていない場合はsessionStorageをクリア
@@ -54,14 +56,14 @@ window.onload = function () {
 
 // moreInfo.addEventListener("click", () => {});
 next.addEventListener("click", () => {
-  console.log(showPet);
+  // console.log(showPet);
 
   displayPet();
 });
 
 const dogData = pets.filter((pet) => pet.species === "Dog");
 const catData = pets.filter((pet) => pet.species === "Cat");
-console.log(dogData);
+// console.log(dogData);
 
 function main() {
   console.log(pets);
@@ -180,6 +182,11 @@ function displayPetInfo(petData) {
   infoSex.innerText = petData.sex;
   infoShelter.innerText = petData.shelter;
   shelterLink.setAttribute("href", `${petData.link}`);
+  shelterLink.setAttribute("target", "_blank"); // 新しいウィンドウで開く
+  shelterLink.addEventListener("click", function(event) {
+    event.preventDefault(); // デフォルトのリンク動作を防ぐ
+    window.open(petData.link, '_blank'); // 新しいウィンドウを開く
+  });
   if (petData.sex === "Male") {
     icon.classList.add("fa-mars");
   } else {

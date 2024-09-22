@@ -175,15 +175,3 @@ document.querySelectorAll("footer ul li a").forEach((e) => {
     sessionStorage.clear();
   });
 });
-
-window.addEventListener("beforeunload", function () {
-  sessionStorage.setItem("displayedPet", JSON.stringify(showPet));
-});
-
-// リロード後にデータを復元する
-window.addEventListener("load", function () {
-  const savedData = sessionStorage.getItem("displayedPet");
-  if (savedData) {
-    showPet = JSON.parse(savedData);
-  }
-});
